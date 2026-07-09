@@ -1,0 +1,56 @@
+LangChain RAG Knowledge Base
+==============================
+
+## What is Retrieval-Augmented Generation (RAG)?
+
+Retrieval-Augmented Generation (RAG) is an AI architecture that enhances large language model (LLM) responses by retrieving relevant information from an external knowledge base before generating an answer. Instead of relying solely on the model's training data, RAG grounds the LLM's response in up-to-date, domain-specific documents.
+
+RAG works in two phases:
+1. Indexing: Documents are split into chunks, converted to vector embeddings, and stored in a vector database.
+2. Retrieval and Generation: At query time, the user's question is embedded, the most similar document chunks are retrieved, and those chunks are passed as context to the LLM to generate an accurate, grounded answer.
+
+## What is LangChain?
+
+LangChain is an open-source Python and JavaScript framework for building applications powered by large language models. It provides composable building blocks for chaining together LLM calls, memory, tools, retrievers, and agents.
+
+Key LangChain concepts:
+- Chains: Sequences of calls to LLMs, tools, or other components using LCEL (LangChain Expression Language).
+- Retrievers: Components that fetch relevant documents from a vector store or search index.
+- Embeddings: Dense vector representations of text used to measure semantic similarity.
+- Vector Stores: Databases optimized for storing and searching high-dimensional vectors (e.g., FAISS, Chroma, Pinecone).
+- Memory: Mechanisms to persist conversation history across turns.
+- Agents: LLM-powered reasoners that dynamically choose which tools to call.
+
+LangChain Expression Language (LCEL) uses the pipe operator (|) to compose chains declaratively:
+  retriever | prompt | llm | output_parser
+
+## What is AWS Bedrock?
+
+Amazon Bedrock is a fully managed AWS service that provides access to foundation models (FMs) from leading AI companies through a single API. It supports models from Anthropic (Claude), Amazon (Titan), Meta (Llama), Mistral, and others.
+
+Key Bedrock features:
+- No infrastructure management: serverless access to powerful FMs.
+- Amazon Titan Embeddings: Bedrock's native embedding models for generating text vectors.
+- Claude on Bedrock: Anthropic's Claude models (Haiku, Sonnet, Opus) available via the Bedrock API.
+- Security: Data stays within your AWS VPC; models are not trained on your data.
+
+## What is FAISS?
+
+FAISS (Facebook AI Similarity Search) is an open-source library for efficient similarity search over dense vectors. In RAG pipelines, FAISS serves as the local vector database:
+- Documents are embedded and indexed with FAISS.
+- At query time, FAISS performs fast approximate nearest-neighbor search to find the most relevant chunks.
+- FAISS indexes can be saved to disk and reloaded without re-embedding.
+
+## Claude Code
+
+Claude Code is Anthropic's official AI-powered coding assistant available as a CLI, desktop app, and IDE extension. It can read, write, and edit code files; run terminal commands; search codebases; and manage git workflows. Claude Code uses the Claude model family (Haiku, Sonnet, Opus) and supports agentic multi-step tasks.
+
+Key Claude Code features:
+- Agentic task execution: Claude Code can autonomously break down complex coding tasks.
+- MCP (Model Context Protocol): Extend Claude Code with custom tools and external system integrations.
+- Memory system: Persist project-specific instructions and context across sessions via CLAUDE.md and memory files.
+- Multi-agent workflows: Spawn parallel subagents for large-scale tasks.
+
+## Amazon Titan Embeddings
+
+Amazon Titan Text Embeddings V2 (amazon.titan-embed-text-v2:0) generates 1024-dimensional embeddings. It supports texts up to 8192 tokens and is optimized for semantic search, RAG, and document clustering use cases. Titan Embeddings V1 (amazon.titan-embed-text-v1) generates 1536-dimensional embeddings and supports up to 8192 tokens.
