@@ -1,3 +1,6 @@
+1) Create a Simple Langchain project with RAG, vector database and knowledge base in separate  python file
+
+2) Now modify the code in such a way if the query is not matching with the knowledge base then search from the LLM and get the response
 The project is created. Here's what was built:
 
 Project Structure
@@ -23,8 +26,11 @@ aws configure
 # 3. Ingest documents into the vector store
 python ingest.py
 
+
 # 4. Query
-python main.py --query-only        # 5 demo questions
+python main.py --query-only        
+
+# 5 demo questions
 python main.py --interactive
 
 Key Design Decisions
